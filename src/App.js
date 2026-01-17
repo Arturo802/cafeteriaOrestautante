@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./App.css";
 
 import menu from "./menu";
-import ProductoCard from "./components/ProductoCard";
+import TarjetaProducto from "./components/TarjetaProducto";
 import ResumenVentas from "./components/ResumenVentas";
-import BotonesAccion from "./components/BotonesAccion";
+import BotonesAccion from "./components/Botones";
 import ResumenModal from "./components/ResumenModal";
 
 function App() {
@@ -74,7 +74,7 @@ function App() {
 
         <div className="row">
           {menu.map((item) => (
-            <ProductoCard
+            <TarjetaProducto
               key={item.nombre}
               item={item}
               cantidad={cantidades[item.nombre]}
