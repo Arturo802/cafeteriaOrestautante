@@ -11,13 +11,14 @@ function App() {
   const [cantidades, setCantidades] = useState({});
   const [modoOscuro, setModoOscuro] = useState(false);
   const [mostrarResumen, setMostrarResumen] = useState(false);
+  const [menuState, setMenuState] = useState(menu);
 
   const handleCantidadChange = (nombre, valor) => {
     setCantidades({ ...cantidades, [nombre]: parseInt(valor) || 0 });
   };
 
   const calcularTotal = () =>
-    menu.reduce((total, item) => {
+    menuState.reduce((total, item) => {
       const cantidad = cantidades[item.nombre] || 0;
       return total + cantidad * item.precio;
     }, 0);
@@ -31,30 +32,50 @@ function App() {
   const hayProductosSeleccionados = () =>
     Object.values(cantidades).some((cantidad) => cantidad > 0);
 
-  const imprimirResumen = () => {
-    const contenido = document.getElementById("resumen-pedido");
-    const ventana = window.open("", "PRINT", "height=600,width=800");
-    ventana.document.write(`<html><head><title>Resumen del pedido</title>`);
-    ventana.document.write(
-      `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">`
-    );
-    ventana.document.write(`</head><body>`);
-    ventana.document.write(contenido.innerHTML);
-    ventana.document.write(`</body></html>`);
-    ventana.document.close();
-    ventana.focus();
-    ventana.print();
-    ventana.close();
-  };
-
   const confirmarVenta = () => {
     if (!hayProductosSeleccionados()) {
-      alert(" No hay productos para confirmar.");
+      alert("No hay productos para confirmar.");
       setMostrarResumen(false);
       return;
     }
 
-    imprimirResumen();
+    // Verificar si hay productos con stock insuficiente
+    const productosSinStock = menuState.filter((item) => {
+      const cantidad = cantidades[item.nombre] || 0;
+      return cantidad > item.stock;
+    });
+
+    if (productosSinStock.length > 0) {
+      const nombres = productosSinStock.map((p) => p.nombre).join(", ");
+      alert(`❌ No hay stock suficiente para: ${nombres}`);
+      return;
+    }
+
+    // Actualizar stock
+    const nuevoMenu = menuState.map((item) => {
+      const cantidadVendida = cantidades[item.nombre] || 0;
+      return {
+        ...item,
+        stock: item.stock - cantidadVendida,
+      };
+    });
+
+    setMenuState(nuevoMenu);
+
+    // Detectar productos con stock bajo
+    const productosBajos = nuevoMenu.filter((item) => item.stock <= 5 && item.stock > 0);
+    if (productosBajos.length > 0) {
+      const nombres = productosBajos.map((p) => p.nombre).join(", ");
+      alert(`⚠️ Se debe reabastecer: ${nombres}`);
+    }
+
+    // Detectar productos agotados
+    const productosAgotados = nuevoMenu.filter((item) => item.stock === 0);
+    if (productosAgotados.length > 0) {
+      const nombres = productosAgotados.map((p) => p.nombre).join(", ");
+      alert(`❌ Producto agotado: ${nombres}`);
+    }
+
     alert("Venta confirmada correctamente.");
     setMostrarResumen(false);
     limpiarFormulario();
@@ -63,7 +84,7 @@ function App() {
   return (
     <div className={modoOscuro ? "bg-dark text-light p-4" : "bg-light text-dark p-4"}>
       <div className="container">
-        <h1 className="text-center mb-4">Gestión de Pedidos - Cafetería IES</h1>
+        <h1 className="text-center mb-4">Gestión de Pedidos - Cafetería IES Lomo de la herradura</h1>
 
         <button
           className="btn btn-secondary mb-4"
@@ -73,7 +94,7 @@ function App() {
         </button>
 
         <div className="row">
-          {menu.map((item) => (
+          {menuState.map((item) => (
             <TarjetaProducto
               key={item.nombre}
               item={item}
@@ -100,11 +121,10 @@ function App() {
           mostrar={mostrarResumen}
           cerrar={() => setMostrarResumen(false)}
           cantidades={cantidades}
-          menu={menu}
+          menu={menuState}
           total={total}
           igic={igic}
           totalConImpuesto={totalConImpuesto}
-          imprimir={imprimirResumen}
           confirmar={confirmarVenta}
           modoOscuro={modoOscuro}
         />

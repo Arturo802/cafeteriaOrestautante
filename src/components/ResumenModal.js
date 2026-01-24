@@ -8,7 +8,6 @@ function ResumenModal({
   total,
   igic,
   totalConImpuesto,
-  imprimir,
   confirmar,
   modoOscuro
 }) {
@@ -25,15 +24,18 @@ function ResumenModal({
 
           <div className="modal-body" id="resumen-pedido">
             <p>
-              <strong>Fecha:</strong> {new Date().toLocaleDateString()} -{" "}
+              <strong>Fecha:</strong> {new Date().toLocaleDateString()} —{" "}
               <strong>Hora:</strong> {new Date().toLocaleTimeString()}
             </p>
 
-            <table className="table table-sm">
+            <h5 className="mt-3">Productos seleccionados</h5>
+
+            <table className="table table-sm table-bordered mt-3">
               <thead>
                 <tr>
                   <th>Producto</th>
                   <th>Cantidad</th>
+                  <th>Stock</th>
                   <th>Precio</th>
                   <th>Subtotal</th>
                 </tr>
@@ -48,6 +50,7 @@ function ResumenModal({
                     <tr key={item.nombre}>
                       <td>{item.nombre}</td>
                       <td>{cantidad}</td>
+                      <td>{item.stock}</td>
                       <td>{item.precio.toFixed(2)} €</td>
                       <td>{subtotal.toFixed(2)} €</td>
                     </tr>
