@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Cafetería / Restaurante App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplicación web desarrollada en **React** para la gestión de pedidos de cafetería o restaurante, incluyendo cálculo de importes y aplicación de lógica de descuentos.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Características Principales
 
-### `npm start`
+* **Gestión de Pedidos:** Interfaz interactiva para la selección de productos y consumo.
+* **Lógica de Descuentos:** Cálculo automático de totales con aplicación de promociones y descuentos.
+* **Componentes Reactivos:** Gestión eficiente del estado de la orden utilizando React Hooks (`useState`, `useEffect`).
+* **Diseño Intuitivo:** Navegación dinámica y adaptable para facilitar su uso.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Tecnologías Utilizadas
 
-### `npm test`
+* **Frontend:** React
+* **Lenguaje:** JavaScript (ES6+)
+* **Estilos:** CSS3 / HTML5
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## ⚙️ Instalación y Configuración
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Sigue estos pasos para ejecutar el proyecto en tu máquina local:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clonar el repositorio:**
+   ```bash
+   git clone [https://github.com/Arturo802/cafeteriaOrestautante.git](https://github.com/Arturo802/cafeteriaOrestautante.git)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   Acceder al directorio del proyecto:
 
-### `npm run eject`
+Bash
+cd cafeteriaOrestautante
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Instalar dependencias:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Bash
+npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Iniciar la aplicación:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Bash
+npm start
 
-## Learn More
+Nota: 
+La aplicación se abrirá en tu navegador en http://localhost:3000.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+🛠️ Comandos Disponibles
+npm start: Inicia la aplicación en modo desarrollo.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+npm test: Ejecuta los tests del proyecto.
 
-### Code Splitting
+npm run build: Compila la aplicación optimizada para producción en la carpeta build.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+👤 Autor
+Arturo
 
-### Analyzing the Bundle Size
+Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. **Clonar el repositorio:**
+   ```bash
+   git clone [https://github.com/Arturo802/cafeteriaOrestautante.git](https://github.com/Arturo802/cafeteriaOrestautante.git)
